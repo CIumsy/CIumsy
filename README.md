@@ -6,10 +6,10 @@
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=CIumsy&label=Profile%20views&color=0e75b6&style=flat" alt="CIumsy" /> </p>
 
 ### 🚀 About Me
-- 🎯 **AIML Engineer & Firmware Architect:** I specialize in real-time EMG analytics and machine learning, blending cutting-edge algorithms with robust embedded systems.
-- 🔬 **On a Mission:** Currently diving deep into both AI/ML and firmware design as a student at SRM Institute of Science and Technology.
-- 🎸 **Beyond the Code:** When I'm not architecting smart systems, you can find me strumming my guitar, brewing the perfect cup of coffee, or jamming out to my favorite tunes.
-- 🤖 **Tech Enthusiast:** Passionate about building solutions that merge the physical and digital worlds, whether it’s through real-time sensor data or creative coding experiments.
+- 🎯 **AIML Engineer & Firmware Architect:** I specialize in real-time EMG analytics, signal processing, and machine learning, blending cutting-edge algorithms with robust embedded systems and firmware development.
+- 🔬 **On a Mission:** Currently diving deep into AI/ML, neuroscience, microcontrollers, and embedded systems as a student at SRM Institute of Science and Technology.
+- 🎸 **Beyond the Code:** When I'm not architecting smart systems or visualizing data, you can find me strumming my guitar, brewing the perfect cup of coffee, or exploring the latest in neuroscience.
+- 🤖 **Tech Enthusiast:** Passionate about merging the physical and digital worlds—whether through sensor integration, firmware innovation, or crafting elegant data visualizations.
 - 📂 Check out my projects on **[GitHub](https://github.com/CIumsy)** and connect with me on **[LinkedIn](https://www.linkedin.com/in/krishnanshu27/)**.
 
 ---
@@ -30,8 +30,10 @@ Python, Java, C++, Solidity, JavaScript, SQL
 #### 🛠️ Technologies & Frameworks:
 FastAPI, Flask, Django, Docker, TensorFlow, OpenCV, Pandas, NumPy
 
-#### 🧰 Developer Tools:
-Git, GitHub, VS Code, Arduino, Raspberry Pi
+#### 🧰 Developer Tools & Areas:
+- **Embedded Systems & Firmware Development:** Arduino, Raspberry Pi, microcontrollers  
+- **Signal Processing & Data Visualization:** Techniques for real-time analytics and visual storytelling of data  
+- **Neuroscience & AI/ML:** Applying machine learning in neurotech and biopotential signal processing
 
 ---
 
