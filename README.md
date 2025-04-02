@@ -10,7 +10,6 @@
 - 🔬 **On a Mission:** Currently diving deep into AI/ML, neuroscience, microcontrollers, and embedded systems as a student at SRM Institute of Science and Technology.
 - 🎸 **Beyond the Code:** When I'm not architecting smart systems or visualizing data, you can find me strumming my guitar, brewing the perfect cup of coffee, or exploring the latest in neuroscience.
 - 🤖 **Tech Enthusiast:** Passionate about merging the physical and digital worlds—whether through sensor integration, firmware innovation, or crafting elegant data visualizations.
-- 📂 Check out my projects on **[GitHub](https://github.com/CIumsy)** and connect with me on **[LinkedIn](https://www.linkedin.com/in/krishnanshu27/)**.
 
 ---
 
