@@ -38,7 +38,6 @@ Git, GitHub, VS Code, Arduino, Raspberry Pi
 ### 📊 GitHub Stats:
 <p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=CIumsy&show_icons=true&locale=en&layout=compact" alt="CIumsy" /></p>
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=CIumsy&show_icons=true&locale=en" alt="CIumsy" /></p>
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=CIumsy&" alt="CIumsy" /></p>
 
 ---
 
