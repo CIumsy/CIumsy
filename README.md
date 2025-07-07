@@ -30,7 +30,7 @@ Python, Java, C++, Solidity, JavaScript, SQL
 FastAPI, Flask, Django, Docker, TensorFlow, OpenCV, Pandas, NumPy
 
 #### 🧰 Developer Tools & Areas:
-- **Embedded Systems & Firmware Development:** Arduino, Raspberry Pi, microcontrollers  
+- **Embedded Systems & Firmware Development:** Arduino, ESP32, Raspberry Pi, microcontrollers  
 - **Signal Processing & Data Visualization:** Techniques for real-time analytics and visual storytelling of data  
 - **Neuroscience & AI/ML:** Applying machine learning in neurotech and biopotential signal processing
 
