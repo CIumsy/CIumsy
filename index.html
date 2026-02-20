@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Neuroscience & Embedded Systems</title>
+    <meta name="description"
+        content="Portfolio showcasing expertise in Brain-Computer Interfaces, biosignal processing, and embedded systems.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0b0f;
+            --bg-elevated: #121218;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.06);
+            --gold: #c9a84c;
+            --gold-light: #e8d48b;
+            --gold-dim: rgba(201, 168, 76, 0.15);
+            --ivory: #f0ece2;
+            --text: #d4d0c8;
+            --text-dim: #7a7770;
+            --border: rgba(201, 168, 76, 0.12);
+            --border-hover: rgba(201, 168, 76, 0.35);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ── Neural Network ── */
+        #neuralBg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ── Grain & Vignette overlay ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201, 168, 76, 0.055) 0%, transparent 70%),
+                radial-gradient(ellipse 100% 100% at 50% 110%, rgba(11, 11, 15, 0.8) 0%, transparent 60%);
+        }
+
+        /* ── Smooth section reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(.4, 0, .2, 1), transform 0.8s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Nav ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 clamp(24px, 5vw, 80px);
+            background: rgba(11, 11, 15, 0.6);
+            backdrop-filter: blur(28px) saturate(1.4);
+            -webkit-backdrop-filter: blur(28px) saturate(1.4);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.4s;
+        }
+
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── Hero ── */
+        header {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            max-width: 820px;
+        }
+
+        .hero-name em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 28px;
+            animation: fadeUp .9s ease both;
+        }
+
+        .hero-label::before,
+        .hero-label::after {
+            content: '';
+            display: inline-block;
+            width: 32px;
+            height: 1px;
+            background: var(--gold);
+            vertical-align: middle;
+            margin: 0 14px;
+            opacity: 0.5;
+        }
+
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 9vw, 6.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            color: var(--ivory);
+            margin-bottom: 24px;
+            animation: fadeUp .9s ease .12s both;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1rem, 2.2vw, 1.25rem);
+            color: var(--text-dim);
+            font-weight: 400;
+            margin-bottom: 20px;
+            letter-spacing: 0.3px;
+            animation: fadeUp .9s ease .24s both;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-dim);
+            max-width: 620px;
+            margin: 0 auto 48px;
+            line-height: 1.85;
+            animation: fadeUp .9s ease .36s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeUp .9s ease .48s both;
+        }
+
+        .btn {
+            padding: 15px 36px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: all 0.35s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #0b0b0f;
+            box-shadow: 0 4px 24px rgba(201, 168, 76, 0.25);
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 36px rgba(201, 168, 76, 0.35);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--ivory);
+            border: 1.5px solid var(--border-hover);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-dim);
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeUp 1s ease 1.2s both;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollPulse 2s ease infinite;
+        }
+
+        /* ── Section ── */
+        .section {
+            position: relative;
+            z-index: 1;
+            padding: 120px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            text-align: center;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            text-align: center;
+            color: var(--ivory);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 1rem;
+            max-width: 560px;
+            margin: 0 auto 72px;
+            line-height: 1.8;
+        }
+
+        .divider {
+            width: min(700px, 85%);
+            height: 1px;
+            margin: 0 auto;
+            background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.22) 40%, rgba(201, 168, 76, 0.22) 60%, transparent);
+            position: relative;
+        }
+
+        .divider::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -2px;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        /* ── Projects ── */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 32px;
+        }
+
+        .p-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all .45s cubic-bezier(.4, 0, .2, 1);
+            position: relative;
+        }
+
+        .p-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.03) 0%, transparent 60%);
+            pointer-events: none;
+            border-radius: 16px;
+        }
+
+        .p-card:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+            transform: translateY(-10px);
+            box-shadow: 0 28px 72px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--border-hover), 0 0 40px rgba(201, 168, 76, 0.07);
+        }
+
+        .p-media {
+            width: 100%;
+            height: 220px;
+            background: var(--bg-elevated);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .p-media iframe,
+        .p-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+        }
+
+        .p-media-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        .p-media-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--gold-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .p-body {
+            padding: 28px;
+        }
+
+        .p-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--ivory);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .p-desc {
+            color: var(--text-dim);
+            font-size: 0.92rem;
+            line-height: 1.75;
+            margin-bottom: 20px;
+        }
+
+        .p-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .p-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 500;
+            background: var(--gold-dim);
+            color: var(--gold);
+            padding: 4px 12px;
+            border-radius: 4px;
+            border: 1px solid rgba(201, 168, 76, 0.18);
+        }
+
+        .p-links {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .p-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        .p-link:hover {
+            color: var(--gold-light);
+        }
+
+        .ed-btn,
+        .del-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.82rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+            display: none;
+        }
+
+        .ed-btn {
+            color: var(--gold);
+        }
+
+        .ed-btn:hover {
+            background: var(--gold-dim);
+        }
+
+        .del-btn {
+            color: #c75050;
+        }
+
+        .del-btn:hover {
+            background: rgba(199, 80, 80, 0.12);
+        }
+
+        #addProjectBtn {
+            display: none;
+        }
+
+        /* ── Skills ── */
+        .skills-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .s-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px 28px;
+            transition: all .35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .s-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity .35s;
+        }
+
+        .s-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-hover);
+        }
+
+        .s-card:hover::after {
+            opacity: 1;
+        }
+
+        .s-icon {
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+        }
+
+        .s-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ivory);
+            margin-bottom: 12px;
+        }
+
+        .s-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .s-pill {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-dim);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: color .25s, border-color .25s, background .25s;
+        }
+
+        .s-card:hover .s-pill {
+            color: rgba(201, 168, 76, 0.75);
+            border-color: rgba(201, 168, 76, 0.18);
+            background: rgba(201, 168, 76, 0.05);
+        }
+
+        /* ── About ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-photo-wrap {
+            position: relative;
+        }
+
+        .about-photo {
+            width: 100%;
+            max-width: 300px;
+            aspect-ratio: 1;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-photo-accent {
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            right: 12px;
+            bottom: 12px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 18px;
+            pointer-events: none;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--ivory);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .about-text p {
+            color: var(--text-dim);
+            margin-bottom: 18px;
+            line-height: 1.85;
+            font-size: 0.98rem;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 36px;
+        }
+
+        .a-stat-val {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .a-stat-lbl {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-dim);
+        }
+
+        /* ── Contact ── */
+        .contact-wrap {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 56px;
+        }
+
+        .c-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transition: all .35s ease;
+            min-width: 152px;
+        }
+
+        .c-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-6px);
+        }
+
+        .c-icon {
+            font-size: 1.6rem;
+        }
+
+        .c-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-dim);
+        }
+
+        .c-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            transition: color 0.2s;
+        }
+
+        .c-link:hover {
+            color: var(--gold-light);
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 48px 24px;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Admin Panel ── */
+        #adminToggle {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            background: var(--gold);
+            color: #0b0b0f;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.82rem;
+            z-index: 1001;
+            transition: all 0.3s;
+            display: none;
+        }
+
+        #adminToggle:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        #adminPanel {
+            position: fixed;
+            top: 0;
+            right: -460px;
+            width: 460px;
+            height: 100vh;
+            background: var(--bg-elevated);
+            border-left: 1px solid var(--border);
+            box-shadow: -8px 0 48px rgba(0, 0, 0, 0.6);
+            transition: right 0.4s cubic-bezier(.4, 0, .2, 1);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 28px;
+        }
+
+        #adminPanel.open {
+            right: 0;
+        }
+
+        .adm-sec {
+            margin-bottom: 28px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .adm-sec h3 {
+            color: var(--gold);
+            margin-bottom: 14px;
+            font-size: 0.92rem;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .adm-lbl {
+            display: block;
+            color: var(--text-dim);
+            font-size: 0.68rem;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .adm-inp,
+        .adm-ta {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.88rem;
+            transition: border-color 0.2s;
+        }
+
+        .adm-inp:focus,
+        .adm-ta:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .adm-ta {
+            min-height: 72px;
+            resize: vertical;
+        }
+
+        .adm-btn {
+            background: var(--gold);
+            color: #0b0b0f;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.82rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            transition: all 0.3s;
+        }
+
+        .adm-btn:hover {
+            background: var(--gold-light);
+        }
+
+        .adm-btn-s {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text);
+        }
+
+        .adm-btn-s:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ── Keyframes ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(36px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scrollPulse {
+
+            0%,
+            100% {
+                opacity: .4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            #adminPanel {
+                width: 100%;
+                right: -100%;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-photo {
+                margin: 0 auto;
+            }
+
+            .about-photo-accent {
+                display: none;
+            }
+
+            .about-stats {
+                justify-content: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="neuralBg"></canvas>
+
+    <button id="adminToggle">✏️ Edit Mode</button>
+    <div id="adminPanel">
+        <h2 style="color:var(--gold);margin-bottom:24px;font-family:'Playfair Display',serif;">Portfolio Editor</h2>
+        <div class="adm-sec">
+            <h3>Hero</h3>
+            <label class="adm-lbl">Name</label><input class="adm-inp" id="heroName">
+            <label class="adm-lbl">Tagline</label><input class="adm-inp" id="heroTagline">
+            <label class="adm-lbl">Description</label><textarea class="adm-ta" id="heroDescription"></textarea>
+            <label class="adm-lbl">Button 1 Text</label><input class="adm-inp" id="btn1Text">
+            <label class="adm-lbl">Button 1 Link</label><input class="adm-inp" id="btn1Link">
+            <label class="adm-lbl">Button 2 Text</label><input class="adm-inp" id="btn2Text">
+            <label class="adm-lbl">Button 2 Link</label><input class="adm-inp" id="btn2Link">
+        </div>
+        <div class="adm-sec">
+            <h3>About</h3>
+            <label class="adm-lbl">Title</label><input class="adm-inp" id="aboutTitle">
+            <label class="adm-lbl">Paragraph 1</label><textarea class="adm-ta" id="aboutText1"></textarea>
+            <label class="adm-lbl">Paragraph 2</label><textarea class="adm-ta" id="aboutText2"></textarea>
+            <label class="adm-lbl">Profile Image URL</label><input class="adm-inp" id="profileImage">
+        </div>
+        <div class="adm-sec">
+            <h3>Contact</h3>
+            <label class="adm-lbl">Email</label><input class="adm-inp" id="contactEmail">
+            <label class="adm-lbl">LinkedIn URL</label><input class="adm-inp" id="contactLinkedIn">
+            <label class="adm-lbl">GitHub URL</label><input class="adm-inp" id="contactGitHub">
+            <label class="adm-lbl">Portfolio URL</label><input class="adm-inp" id="contactPortfolio">
+        </div>
+        <div style="margin-top:20px;">
+            <button class="adm-btn" onclick="saveContent()">💾 Save</button>
+            <button class="adm-btn adm-btn-s" onclick="exportData()">📥 Export</button>
+            <button class="adm-btn adm-btn-s" onclick="importData()">📤 Import</button>
+            <button class="adm-btn adm-btn-s" onclick="changePassword()">🔑 Password</button>
+        </div>
+        <p style="color:var(--text-dim);font-size:.75rem;margin-top:14px;line-height:1.6;">
+            Saved in browser storage. <span style="color:var(--gold);">Ctrl+Shift+E</span> toggles edit mode.
+        </p>
+    </div>
+
+    <nav>
+        <div class="nav-brand" id="navBrand">KS</div>
+        <ul class="nav-links">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="hero">
+            <div class="hero-label">Portfolio</div>
+            <h1 class="hero-name" id="dName">Your Name</h1>
+            <p class="hero-tagline" id="dTagline">Neuroscience Engineer · Brain-Computer Interfaces · Embedded Systems
+            </p>
+            <p class="hero-desc" id="dDesc">Specializing in real-time biosignal processing, EEG/EMG/ECG acquisition, and
+                building interactive BCI applications.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-gold" id="dBtn1">View Projects</a>
+                <a href="#contact" class="btn btn-ghost" id="dBtn2">Contact Me</a>
+            </div>
+        </div>
+        <div class="scroll-cue"><span>scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </header>
+
+    <div class="divider"></div>
+
+    <div class="section reveal" id="projects">
+        <p class="section-eyebrow">Selected Work</p>
+        <h2 class="section-heading">Featured Projects</h2>
+        <p class="section-sub">Real-time biosignal processing, embedded firmware, and interactive BCI applications</p>
+        <div class="projects-grid" id="projectsGrid"></div>
+        <div style="text-align:center;margin-top:48px;">
+            <button class="btn btn-gold" id="addProjectBtn" onclick="addProject()">+ Add Project</button>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section reveal" id="skills">
+        <p class="section-eyebrow">Expertise</p>
+        <h2 class="section-heading">Skills & Technologies</h2>
+        <p class="section-sub">A multidisciplinary toolkit spanning neuroscience, hardware, and software</p>
+        <div class="skills-row">
+            <div class="s-card">
+                <div class="s-icon">🧠</div>
+                <div class="s-name">Biosignal Processing</div>
+                <div class="s-pills"><span class="s-pill">EEG</span><span class="s-pill">EMG</span><span
+                        class="s-pill">ECG</span><span class="s-pill">FFT</span><span
+                        class="s-pill">Filtering</span><span class="s-pill">BCI</span></div>
+            </div>
+            <div class="s-card">
+                <div class="s-icon">⚡</div>
+                <div class="s-name">Embedded Systems</div>
+                <div class="s-pills"><span class="s-pill">ESP32</span><span class="s-pill">Arduino</span><span
+                        class="s-pill">STM32</span><span class="s-pill">RTOS</span><span class="s-pill">BLE</span><span
+                        class="s-pill">C/C++</span></div>
+            </div>
+            <div class="s-card">
+                <div class="s-icon">🤖</div>
+                <div class="s-name">Machine Learning</div>
+                <div class="s-pills"><span class="s-pill">TensorFlow</span><span class="s-pill">CNN-LSTM</span><span
+                        class="s-pill">Python</span><span class="s-pill">Scikit-learn</span></div>
+            </div>
+            <div class="s-card">
+                <div class="s-icon">📊</div>
+                <div class="s-name">Visualization</div>
+                <div class="s-pills"><span class="s-pill">MATLAB</span><span class="s-pill">NumPy</span><span
+                        class="s-pill">Pandas</span><span class="s-pill">Unity</span><span
+                        class="s-pill">Real-time</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section reveal" id="about">
+        <p class="section-eyebrow">Background</p>
+        <h2 class="section-heading">About Me</h2>
+        <div class="about-grid">
+            <div class="about-photo-wrap">
+                <div class="about-photo-accent"></div>
+                <div class="about-photo" id="aboutImg"><span>Add photo</span></div>
+            </div>
+            <div class="about-text">
+                <h3 id="dAboutTitle">About Me</h3>
+                <p id="dAboutT1">I'm a neuroscience engineer specializing in brain-computer interfaces and embedded
+                    biosignal systems.</p>
+                <p id="dAboutT2">With experience in EEG/EMG/ECG processing, real-time data visualization, and firmware
+                    development, I build systems that bridge neuroscience and technology.</p>
+                <div class="about-stats">
+                    <div>
+                        <div class="a-stat-val">10+</div>
+                        <div class="a-stat-lbl">Projects</div>
+                    </div>
+                    <div>
+                        <div class="a-stat-val">3+</div>
+                        <div class="a-stat-lbl">Years</div>
+                    </div>
+                    <div>
+                        <div class="a-stat-val">5+</div>
+                        <div class="a-stat-lbl">Publications</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section reveal" id="contact">
+        <div class="contact-wrap">
+            <p class="section-eyebrow">Get in Touch</p>
+            <h2 class="section-heading">Let's Connect</h2>
+            <p class="section-sub">Open to freelance projects, collaborations, and consulting opportunities</p>
+            <div class="contact-cards" id="contactMethods"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 <span id="footerName" style="color:var(--gold);">Your Name</span>. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // ═══════════════════════════════════════════════════════════
+        // NEURAL NETWORK — free movement, self-distributing (no grid)
+        // Physics: repulsion keeps spread, boundary pressure keeps in,
+        // sinusoidal wander adds organic feel. No cursor interaction.
+        // ═══════════════════════════════════════════════════════════
+        const cvs = document.getElementById('neuralBg');
+        const ctx2 = cvs.getContext('2d');
+        let W, H;
+
+        function resizeCanvas() {
+            W = cvs.width = window.innerWidth;
+            H = cvs.height = window.innerHeight;
+        }
+        resizeCanvas();
+        // Debounce resize so we don't thrash on window drag
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => { resizeCanvas(); }, 120);
+        });
+
+        // ── Tuning constants ──
+        const N_NODES = 72;    // node count — keep moderate for perf
+        const LINK_DIST = 180;   // max edge length
+        const MAX_SPD = 0.22;  // absolute speed cap (px/frame)
+        const FRICTION = 0.985; // velocity damping per frame
+        const REPEL_R = 120;   // repulsion starts within this radius
+        const REPEL_K = 0.012; // repulsion strength
+        const BOUND_PAD = 60;    // soft boundary margin (px from edge)
+        const BOUND_K = 0.006; // boundary push strength
+        const WANDER_K = 0.003; // sinusoidal wander amplitude
+        const MAX_SIGS = 10;    // max concurrent signal pulses
+
+        // ── Node ──
+        class NNode {
+            constructor() {
+                // Scatter randomly across the full viewport
+                this.x = BOUND_PAD + Math.random() * (W - BOUND_PAD * 2);
+                this.y = BOUND_PAD + Math.random() * (H - BOUND_PAD * 2);
+                // Very slow initial velocity in a random direction
+                const ang = Math.random() * Math.PI * 2;
+                const spd = MAX_SPD * (0.2 + Math.random() * 0.5);
+                this.vx = Math.cos(ang) * spd;
+                this.vy = Math.sin(ang) * spd;
+                // Visual
+                this.hub = Math.random() > 0.88;
+                this.r = this.hub ? (Math.random() * 1.6 + 2.0) : (Math.random() * 1.2 + 0.6);
+                this.phase = Math.random() * Math.PI * 2;
+                // Each node gets its own wander personality
+                this.wFreq = 0.0006 + Math.random() * 0.0008; // very slow oscillation
+                this.wOff = Math.random() * Math.PI * 2;
+            }
+
+            tick(all) {
+                this.phase += 0.010;
+
+                /* 1. Sinusoidal wander — organic, never aggressive */
+                const t = performance.now() * this.wFreq + this.wOff;
+                this.vx += Math.cos(t) * WANDER_K;
+                this.vy += Math.sin(t + 1.2) * WANDER_K;
+
+                /* 2. Node-to-node repulsion — natural self-spacing */
+                for (let i = 0; i < all.length; i++) {
+                    const o = all[i];
+                    if (o === this) continue;
+                    const dx = this.x - o.x;
+                    const dy = this.y - o.y;
+                    const d2 = dx * dx + dy * dy;
+                    if (d2 < REPEL_R * REPEL_R && d2 > 0.01) {
+                        const d = Math.sqrt(d2);
+                        const f = REPEL_K * (1 - d / REPEL_R); // stronger when closer
+                        this.vx += (dx / d) * f;
+                        this.vy += (dy / d) * f;
+                    }
+                }
+
+                /* 3. Soft boundary pressure — no teleporting, just a nudge inward */
+                if (this.x < BOUND_PAD) this.vx += BOUND_K * (BOUND_PAD - this.x);
+                if (this.x > W - BOUND_PAD) this.vx -= BOUND_K * (this.x - (W - BOUND_PAD));
+                if (this.y < BOUND_PAD) this.vy += BOUND_K * (BOUND_PAD - this.y);
+                if (this.y > H - BOUND_PAD) this.vy -= BOUND_K * (this.y - (H - BOUND_PAD));
+
+                /* 4. Friction + hard speed cap — prevents runaway acceleration */
+                this.vx *= FRICTION;
+                this.vy *= FRICTION;
+                const spd = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+                if (spd > MAX_SPD) {
+                    const inv = MAX_SPD / spd;
+                    this.vx *= inv;
+                    this.vy *= inv;
+                }
+
+                this.x += this.vx;
+                this.y += this.vy;
+
+                /* 5. Hard clamp as a last resort (shouldn't normally fire) */
+                this.x = Math.max(-10, Math.min(W + 10, this.x));
+                this.y = Math.max(-10, Math.min(H + 10, this.y));
+            }
+
+            draw() {
+                const pulse = 0.72 + 0.28 * Math.sin(this.phase);
+                const rr = this.r * pulse;
+                const halo = rr * 6;
+                const g = ctx2.createRadialGradient(this.x, this.y, 0, this.x, this.y, halo);
+                g.addColorStop(0, this.hub ? 'rgba(201,168,76,0.5)' : 'rgba(201,168,76,0.18)');
+                g.addColorStop(1, 'rgba(201,168,76,0)');
+                ctx2.beginPath(); ctx2.arc(this.x, this.y, halo, 0, 6.283);
+                ctx2.fillStyle = g; ctx2.fill();
+                ctx2.beginPath(); ctx2.arc(this.x, this.y, rr, 0, 6.283);
+                ctx2.fillStyle = this.hub ? 'rgba(232,212,139,0.90)' : 'rgba(201,168,76,0.62)';
+                ctx2.fill();
+            }
+        }
+
+        // ── Initialise nodes (plain random scatter) ──
+        let nodes = [];
+        for (let i = 0; i < N_NODES; i++) nodes.push(new NNode());
+
+        // ── Signal pulses (capped array) ──
+        const sigs = [];
+        function spawnSig() {
+            if (sigs.length >= MAX_SIGS) return; // hard cap — no runaway growth
+            const a = (Math.random() * N_NODES) | 0;
+            const b = (Math.random() * N_NODES) | 0;
+            if (a === b) return;
+            const dx = nodes[a].x - nodes[b].x;
+            const dy = nodes[a].y - nodes[b].y;
+            if (dx * dx + dy * dy < LINK_DIST * LINK_DIST)
+                sigs.push({ a, b, t: 0, spd: 0.004 + Math.random() * 0.006 });
+        }
+        setInterval(spawnSig, 500);
+
+        // ── Render loop (rAF-based, self-regulating) ──
+        let lastFrame = 0;
+        function frame(ts) {
+            // Skip frame if tab is hidden or too slow (> 100ms gap = tab was backgrounded)
+            const dt = ts - lastFrame;
+            lastFrame = ts;
+            if (dt > 100) { requestAnimationFrame(frame); return; }
+
+            ctx2.clearRect(0, 0, W, H);
+
+            // Draw edges first (below nodes)
+            for (let i = 0; i < N_NODES; i++) {
+                for (let j = i + 1; j < N_NODES; j++) {
+                    const dx = nodes[i].x - nodes[j].x;
+                    const dy = nodes[i].y - nodes[j].y;
+                    const d2 = dx * dx + dy * dy;
+                    if (d2 < LINK_DIST * LINK_DIST) {
+                        const alpha = 0.26 * (1 - Math.sqrt(d2) / LINK_DIST);
+                        ctx2.beginPath();
+                        ctx2.strokeStyle = `rgba(201,168,76,${alpha.toFixed(3)})`;
+                        ctx2.lineWidth = 0.5;
+                        ctx2.moveTo(nodes[i].x, nodes[i].y);
+                        ctx2.lineTo(nodes[j].x, nodes[j].y);
+                        ctx2.stroke();
+                    }
+                }
+            }
+
+            // Tick + draw nodes
+            for (let i = 0; i < N_NODES; i++) {
+                nodes[i].tick(nodes);
+                nodes[i].draw();
+            }
+
+            // Signal pulses
+            for (let i = sigs.length - 1; i >= 0; i--) {
+                const s = sigs[i];
+                s.t += s.spd;
+                if (s.t >= 1) { sigs.splice(i, 1); continue; }
+                const nx = nodes[s.a], nb = nodes[s.b];
+                const sx = nx.x + (nb.x - nx.x) * s.t;
+                const sy = nx.y + (nb.y - nx.y) * s.t;
+                const sg = ctx2.createRadialGradient(sx, sy, 0, sx, sy, 5.5);
+                sg.addColorStop(0, 'rgba(232,212,139,0.88)');
+                sg.addColorStop(1, 'rgba(232,212,139,0)');
+                ctx2.beginPath(); ctx2.arc(sx, sy, 5.5, 0, 6.283);
+                ctx2.fillStyle = sg; ctx2.fill();
+            }
+
+            requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+
+        // ═══════════════════════════════════════════════
+        // SCROLL REVEAL
+        // ═══════════════════════════════════════════════
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+        // ═══════════════════════════════════════════════
+        // LOCAL / PRODUCTION
+        // ═══════════════════════════════════════════════
+        const isLocal = ['localhost', '127.0.0.1', ''].includes(location.hostname) || location.protocol === 'file:';
+        const adminPanel = document.getElementById('adminPanel');
+        const adminToggle = document.getElementById('adminToggle');
+
+        if (isLocal) {
+            adminToggle.style.display = 'block';
+            document.getElementById('addProjectBtn').style.display = 'inline-flex';
+        } else {
+            adminPanel.remove(); adminToggle.remove();
+        }
+
+        adminToggle.addEventListener('click', () => {
+            adminPanel.classList.toggle('open');
+            adminToggle.textContent = adminPanel.classList.contains('open') ? '✖ Close' : '✏️ Edit Mode';
+            if (adminPanel.classList.contains('open')) populateAdmin();
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && e.shiftKey && e.key === 'E' && isLocal) adminToggle.click();
+        });
+
+        // ═══════════════════════════════════════════════
+        // DATA
+        // ═══════════════════════════════════════════════
+        let D = {
+            hero: {
+                name: 'Your Name', tagline: 'Neuroscience Engineer · Brain-Computer Interfaces · Embedded Systems',
+                description: 'Specializing in real-time biosignal processing, EEG/EMG/ECG acquisition, and building interactive BCI applications.',
+                btn1Text: 'View Projects', btn1Link: '#projects', btn2Text: 'Contact Me', btn2Link: '#contact'
+            },
+            about: {
+                title: 'About Me',
+                text1: "I'm a neuroscience engineer specializing in brain-computer interfaces and embedded biosignal systems.",
+                text2: "With experience in EEG/EMG/ECG processing, real-time data visualization, and firmware development, I build systems that bridge neuroscience and technology.",
+                image: ''
+            },
+            contact: { email: 'your@email.com', linkedin: 'https://linkedin.com/in/yourprofile', github: 'https://github.com/yourusername', portfolio: '' },
+            projects: [
+                { title: 'EEG Brain-Computer Interface', description: 'Real-time EEG signal processing system for controlling games using brain signals and EOG detection.', tech: ['EEG', 'ESP32', 'Unity', 'BLE', 'Signal Processing'], videoUrl: '', githubUrl: '', demoUrl: '' },
+                { title: 'EMG Gesture Recognition', description: 'Machine learning pipeline for recognizing hand gestures from EMG signals with 6-channel acquisition.', tech: ['EMG', 'Python', 'TensorFlow', 'CNN-LSTM', 'Arduino'], videoUrl: '', githubUrl: '', demoUrl: '' },
+                { title: 'ECG Heart Rate Monitor', description: 'Precise PQRST detection algorithm for calculating BPM from 3-channel ECG with medical-grade accuracy.', tech: ['ECG', 'C/C++', 'DSP', 'Real-time', 'NPG Lite'], videoUrl: '', githubUrl: '', demoUrl: '' }
+            ]
+        };
+
+        // ═══════════════════════════════════════════════
+        // VIDEO BUILDER
+        // ═══════════════════════════════════════════════
+        function vidHTML(url) {
+            if (!url) return '<div class="p-media-empty"><div class="p-media-icon">▶</div><span>Add video URL</span></div>';
+            if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                let id = url.includes('youtu.be/') ? url.split('youtu.be/')[1].split('?')[0] : url.split('v=')[1]?.split('&')[0];
+                return `<iframe src="https://www.youtube.com/embed/${id}?rel=0" allowfullscreen allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"></iframe>`;
+            }
+            if (url.includes('cloudinary.com') || url.includes('res.cloudinary'))
+                return `<video src="${url}" autoplay muted loop playsinline preload="metadata"></video>`;
+            if (url.includes('vimeo.com'))
+                return `<iframe src="https://player.vimeo.com/video/${url.split('vimeo.com/')[1]?.split('?')[0]}" allowfullscreen></iframe>`;
+            return `<video src="${url}" controls preload="metadata"></video>`;
+        }
+
+        // ═══════════════════════════════════════════════
+        // RENDER
+        // ═══════════════════════════════════════════════
+        function load() { const s = localStorage.getItem('portfolioData'); if (s) try { D = JSON.parse(s); } catch { } renderAll(); }
+
+        function renderAll() { renderHero(); renderAbout(); renderContact(); renderProjects(); }
+
+        function renderHero() {
+            document.getElementById('dName').textContent = D.hero.name;
+            document.getElementById('dTagline').textContent = D.hero.tagline;
+            document.getElementById('dDesc').textContent = D.hero.description;
+            const b1 = document.getElementById('dBtn1'); b1.textContent = D.hero.btn1Text; b1.href = D.hero.btn1Link;
+            const b2 = document.getElementById('dBtn2'); b2.textContent = D.hero.btn2Text; b2.href = D.hero.btn2Link;
+            document.getElementById('footerName').textContent = D.hero.name;
+            const ini = D.hero.name.split(' ').filter(Boolean).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+            document.getElementById('navBrand').textContent = ini || 'KS';
+        }
+
+        function renderAbout() {
+            document.getElementById('dAboutTitle').textContent = D.about.title;
+            document.getElementById('dAboutT1').textContent = D.about.text1;
+            document.getElementById('dAboutT2').textContent = D.about.text2;
+            const box = document.getElementById('aboutImg');
+            box.innerHTML = D.about.image ? `<img src="${D.about.image}" alt="Profile">` : '<span>Add photo</span>';
+        }
+
+        function renderContact() {
+            const items = [
+                { icon: '✉️', label: 'Email', val: D.contact.email, link: 'mailto:' + D.contact.email },
+                { icon: '💼', label: 'LinkedIn', val: 'LinkedIn', link: D.contact.linkedin },
+                { icon: '🐙', label: 'GitHub', val: 'GitHub', link: D.contact.github }
+            ];
+            if (D.contact.portfolio) items.push({ icon: '🌐', label: 'Portfolio', val: 'Website', link: D.contact.portfolio });
+            document.getElementById('contactMethods').innerHTML = items.filter(i => i.link).map(i => `
+        <div class="c-card"><div class="c-icon">${i.icon}</div><span class="c-label">${i.label}</span>
+        <a href="${i.link}" class="c-link" target="_blank" rel="noopener">${i.val}</a></div>`).join('');
+        }
+
+        function renderProjects() {
+            const g = document.getElementById('projectsGrid');
+            g.innerHTML = D.projects.map((p, i) => {
+                const tags = p.tech.map(t => `<span class="p-tag">${t}</span>`).join('');
+                let links = '';
+                if (p.githubUrl) links += `<a href="${p.githubUrl}" class="p-link" target="_blank">GitHub →</a>`;
+                if (p.demoUrl) links += `<a href="${p.demoUrl}" class="p-link" target="_blank">Demo →</a>`;
+                links += `<button class="ed-btn" onclick="editProject(${i})">✏️ Edit</button>`;
+                links += `<button class="del-btn" onclick="deleteProject(${i})">🗑 Delete</button>`;
+                return `<div class="p-card" style="animation:fadeUp .7s ease ${i * .08}s both">
+            <div class="p-media">${vidHTML(p.videoUrl)}</div>
+            <div class="p-body"><h3 class="p-title">${p.title}</h3><p class="p-desc">${p.description}</p>
+            <div class="p-tags">${tags}</div><div class="p-links">${links}</div></div></div>`;
+            }).join('');
+            if (isLocal) g.querySelectorAll('.ed-btn,.del-btn').forEach(b => b.style.display = 'inline-block');
+        }
+
+        function populateAdmin() {
+            document.getElementById('heroName').value = D.hero.name;
+            document.getElementById('heroTagline').value = D.hero.tagline;
+            document.getElementById('heroDescription').value = D.hero.description;
+            document.getElementById('btn1Text').value = D.hero.btn1Text;
+            document.getElementById('btn1Link').value = D.hero.btn1Link;
+            document.getElementById('btn2Text').value = D.hero.btn2Text;
+            document.getElementById('btn2Link').value = D.hero.btn2Link;
+            document.getElementById('aboutTitle').value = D.about.title;
+            document.getElementById('aboutText1').value = D.about.text1;
+            document.getElementById('aboutText2').value = D.about.text2;
+            document.getElementById('profileImage').value = D.about.image;
+            document.getElementById('contactEmail').value = D.contact.email;
+            document.getElementById('contactLinkedIn').value = D.contact.linkedin;
+            document.getElementById('contactGitHub').value = D.contact.github;
+            document.getElementById('contactPortfolio').value = D.contact.portfolio;
+        }
+
+        function saveContent() {
+            D.hero = {
+                name: document.getElementById('heroName').value, tagline: document.getElementById('heroTagline').value,
+                description: document.getElementById('heroDescription').value,
+                btn1Text: document.getElementById('btn1Text').value, btn1Link: document.getElementById('btn1Link').value,
+                btn2Text: document.getElementById('btn2Text').value, btn2Link: document.getElementById('btn2Link').value
+            };
+            D.about = {
+                title: document.getElementById('aboutTitle').value, text1: document.getElementById('aboutText1').value,
+                text2: document.getElementById('aboutText2').value, image: document.getElementById('profileImage').value
+            };
+            D.contact = {
+                email: document.getElementById('contactEmail').value, linkedin: document.getElementById('contactLinkedIn').value,
+                github: document.getElementById('contactGitHub').value, portfolio: document.getElementById('contactPortfolio').value
+            };
+            localStorage.setItem('portfolioData', JSON.stringify(D)); renderAll(); alert('✅ Saved!');
+        }
+
+        function addProject() {
+            const t = prompt('Title:'); if (!t) return;
+            D.projects.push({
+                title: t, description: prompt('Description:') || '', tech: (prompt('Tech (comma-sep):') || '').split(',').map(s => s.trim()).filter(Boolean),
+                videoUrl: prompt('Video URL (YouTube/Cloudinary/mp4):') || '', githubUrl: prompt('GitHub URL:') || '', demoUrl: prompt('Demo URL:') || ''
+            });
+            localStorage.setItem('portfolioData', JSON.stringify(D)); renderProjects();
+        }
+
+        function editProject(i) {
+            const p = D.projects[i];
+            const t = prompt('Title:', p.title); if (t === null) return;
+            D.projects[i] = {
+                title: t || p.title, description: prompt('Desc:', p.description) ?? p.description,
+                tech: (prompt('Tech:', p.tech.join(', ')) || '').split(',').map(s => s.trim()).filter(Boolean) || p.tech,
+                videoUrl: prompt('Video URL:', p.videoUrl) ?? p.videoUrl,
+                githubUrl: prompt('GitHub:', p.githubUrl) ?? p.githubUrl,
+                demoUrl: prompt('Demo:', p.demoUrl) ?? p.demoUrl
+            };
+            localStorage.setItem('portfolioData', JSON.stringify(D)); renderProjects();
+        }
+
+        function deleteProject(i) { if (confirm('Delete?')) { D.projects.splice(i, 1); localStorage.setItem('portfolioData', JSON.stringify(D)); renderProjects(); } }
+
+        function exportData() {
+            const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(D, null, 2)], { type: 'application/json' }));
+            a.download = 'portfolio-backup.json'; a.click();
+        }
+
+        function importData() {
+            const inp = document.createElement('input'); inp.type = 'file'; inp.accept = '.json';
+            inp.onchange = e => {
+                const r = new FileReader(); r.onload = ev => {
+                    try {
+                        D = JSON.parse(ev.target.result);
+                        localStorage.setItem('portfolioData', JSON.stringify(D)); renderAll(); alert('✅ Imported!');
+                    } catch { alert('❌ Bad file'); }
+                }; r.readAsText(e.target.files[0]);
+            };
+            inp.click();
+        }
+
+        function changePassword() {
+            const cur = prompt('Current password:'); if (cur !== (localStorage.getItem('adminPassword') || 'admin123')) { alert('❌ Wrong'); return; }
+            const nw = prompt('New password (6+ chars):'); if (nw && nw.length >= 6) { localStorage.setItem('adminPassword', nw); alert('✅ Changed!'); }
+            else if (nw !== null) alert('❌ Too short');
+        }
+
+        load();
+    </script>
+</body>
+
+</html>
