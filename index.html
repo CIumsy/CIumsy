@@ -929,12 +929,18 @@
         </div>
         <div style="margin-top:20px;">
             <button class="adm-btn" onclick="saveContent()">💾 Save</button>
-            <button class="adm-btn adm-btn-s" onclick="exportData()">📥 Export</button>
-            <button class="adm-btn adm-btn-s" onclick="importData()">📤 Import</button>
+            <button class="adm-btn" onclick="bakeAndDownload()"
+                style="background:linear-gradient(135deg,#c9a84c,#a07830);"
+                title="Embed edits into the HTML file — use this before publishing!">⬇️ Bake &amp; Download</button>
+            <button class="adm-btn adm-btn-s" onclick="exportData()">📦 Backup JSON</button>
+            <button class="adm-btn adm-btn-s" onclick="importData()">📤 Import JSON</button>
             <button class="adm-btn adm-btn-s" onclick="changePassword()">🔑 Password</button>
         </div>
         <p style="color:var(--text-dim);font-size:.75rem;margin-top:14px;line-height:1.6;">
-            Saved in browser storage. <span style="color:var(--gold);">Ctrl+Shift+E</span> toggles edit mode.
+            <strong style="color:var(--gold);">⬇️ Bake &amp; Download</strong> saves edits <em>into the HTML file</em> —
+            replace your index.html with the downloaded copy before deploying.<br>
+            <span style="opacity:.7;">💾 Save = browser storage only (local preview). <span
+                    style="color:var(--gold);">Ctrl+Shift+E</span> toggles this panel.</span>
         </p>
     </div>
 
@@ -1287,72 +1293,24 @@
         // DATA
         // ═══════════════════════════════════════════════
         let D = {
-          "hero": {
-                    "name": "Krishnanshu Mittal",
-                    "tagline": "Neuroscience Engineer | Brain-Computer Interfaces | Embedded Systems",
-                    "description": "Specializing in real-time biosignal processing, EEG/EMG/ECG acquisition, and building interactive BCI applications.",
-                    "btn1Text": "View Projects",
-                    "btn1Link": "#projects",
-                    "btn2Text": "Contact Me",
-                    "btn2Link": "#contact"
-          },
-          "about": {
-                    "title": "About Me",
-                    "text1": "I'm a neuroscience engineer specializing in brain-computer interfaces and embedded biosignal systems.",
-                    "text2": "With experience in EEG/EMG/ECG processing, real-time data visualization, and firmware development, I build systems that bridge neuroscience and technology.",
-                    "image": ""
-          },
-          "contact": {
-                    "email": "your@email.com",
-                    "linkedin": "https://linkedin.com/in/yourprofile",
-                    "github": "https://github.com/yourusername",
-                    "portfolio": ""
-          },
-          "projects": [
-                    {
-                              "title": "Brain Controlled Mixer Grinder",
-                              "description": "Real-time EEG signal processing system for controlling AC appliances using focus detection.",
-                              "tech": [
-                                        "ESP32",
-                                        "EEG Signals",
-                                        "BLE",
-                                        "Signal Processing",
-                                        "Signal Filtering"
-                              ],
-                              "videoUrl": "https://res.cloudinary.com/dfdqptfvs/video/upload/v1770671632/You_can_control_any_device_or_appliances_with_your_brain_Yes.._you_heard_correct_with_Neuro_Pl_vg5ihs.mp4",
-                              "githubUrl": "",
-                              "demoUrl": ""
-                    },
-                    {
-                              "title": "EMG Gesture Recognition",
-                              "description": "Machine learning pipeline for recognizing hand gestures from EMG signals with 6-channel acquisition.",
-                              "tech": [
-                                        "EMG",
-                                        "Python",
-                                        "TensorFlow",
-                                        "CNN-LSTM",
-                                        "Arduino"
-                              ],
-                              "videoUrl": "",
-                              "githubUrl": "",
-                              "demoUrl": ""
-                    },
-                    {
-                              "title": "ECG Heart Rate Monitor",
-                              "description": "Precise PQRST detection algorithm for calculating BPM from 3-channel ECG with medical-grade accuracy.",
-                              "tech": [
-                                        "ECG",
-                                        "C/C++",
-                                        "DSP",
-                                        "Real-time Processing",
-                                        "NPG Lite"
-                              ],
-                              "videoUrl": "",
-                              "githubUrl": "",
-                              "demoUrl": ""
-                    }
-          ]
-};
+            hero: {
+                name: 'Your Name', tagline: 'Neuroscience Engineer · Brain-Computer Interfaces · Embedded Systems',
+                description: 'Specializing in real-time biosignal processing, EEG/EMG/ECG acquisition, and building interactive BCI applications.',
+                btn1Text: 'View Projects', btn1Link: '#projects', btn2Text: 'Contact Me', btn2Link: '#contact'
+            },
+            about: {
+                title: 'About Me',
+                text1: "I'm a neuroscience engineer specializing in brain-computer interfaces and embedded biosignal systems.",
+                text2: "With experience in EEG/EMG/ECG processing, real-time data visualization, and firmware development, I build systems that bridge neuroscience and technology.",
+                image: ''
+            },
+            contact: { email: 'your@email.com', linkedin: 'https://linkedin.com/in/yourprofile', github: 'https://github.com/yourusername', portfolio: '' },
+            projects: [
+                { title: 'EEG Brain-Computer Interface', description: 'Real-time EEG signal processing system for controlling games using brain signals and EOG detection.', tech: ['EEG', 'ESP32', 'Unity', 'BLE', 'Signal Processing'], videoUrl: '', githubUrl: '', demoUrl: '' },
+                { title: 'EMG Gesture Recognition', description: 'Machine learning pipeline for recognizing hand gestures from EMG signals with 6-channel acquisition.', tech: ['EMG', 'Python', 'TensorFlow', 'CNN-LSTM', 'Arduino'], videoUrl: '', githubUrl: '', demoUrl: '' },
+                { title: 'ECG Heart Rate Monitor', description: 'Precise PQRST detection algorithm for calculating BPM from 3-channel ECG with medical-grade accuracy.', tech: ['ECG', 'C/C++', 'DSP', 'Real-time', 'NPG Lite'], videoUrl: '', githubUrl: '', demoUrl: '' }
+            ]
+        };
 
         // ═══════════════════════════════════════════════
         // VIDEO BUILDER
@@ -1488,6 +1446,56 @@
         function exportData() {
             const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(D, null, 2)], { type: 'application/json' }));
             a.download = 'portfolio-backup.json'; a.click();
+        }
+
+        function bakeAndDownload() {
+            // Use a file picker so it works on file:// too (fetch is blocked there)
+            const inp = document.createElement('input');
+            inp.type = 'file';
+            inp.accept = '.html,.htm';
+            inp.onchange = e => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = ev => {
+                    const src = ev.target.result;
+                    bakeIntoSource(src);
+                };
+                reader.readAsText(file);
+            };
+            inp.click();
+        }
+
+        function bakeIntoSource(src) {
+            // Serialise current live data
+            const dataJSON = JSON.stringify(D, null, 12);
+
+            // Strategy 1 — anchor on the // DATA comment block above let D
+            let updated = src.replace(
+                /(\/\/ ═+[^\n]*\n\s*\/\/ DATA\b[^\n]*\n\s*\/\/ ═+[^\n]*\n\s*)let D = \{[\s\S]*?\n        \};/,
+                (_, pre) => pre + 'let D = ' + dataJSON + ';'
+            );
+
+            // Strategy 2 — simpler: just find `let D = {` and match to `\n        };`
+            if (updated === src) {
+                updated = src.replace(
+                    /let D = \{[\s\S]*?\n        \};/,
+                    'let D = ' + dataJSON + ';'
+                );
+            }
+
+            if (updated === src) {
+                alert('❌ Could not locate the data block in the file.\nMake sure you selected the correct index.html.');
+                return;
+            }
+
+            // Trigger download
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(new Blob([updated], { type: 'text/html' }));
+            a.download = 'index.html';
+            a.click();
+            setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+            alert('✅ Downloaded! Replace your index.html with this file, then deploy.');
         }
 
         function importData() {
