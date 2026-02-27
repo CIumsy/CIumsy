@@ -1309,47 +1309,77 @@
                     "image": ""
           },
           "contact": {
-                    "email": "your@email.com",
-                    "linkedin": "https://linkedin.com/in/yourprofile",
-                    "github": "https://github.com/yourusername",
-                    "portfolio": ""
+                    "email": "clumsyy4u@gmail.com",
+                    "linkedin": "https://linkedin.com/in/krishnanshu27",
+                    "github": "https://github.com/CIumsy",
+                    "portfolio": "clumsythinks.me"
           },
           "projects": [
                     {
                               "title": "Control AC appliances with your mind",
-                              "description": "Real-time EEG signal processing system for controlling AC appliances using focus detection.",
+                              "description": "Developed a brain-computer interface (BCI) system that detects user focus using EEG signals and controls AC appliances via an IR module or smart switch.\nImplemented real-time signal processing to extract beta-band activity and trigger appliance commands based on sustained concentration levels.",
                               "tech": [
-                                        "Neuroplayground Lite",
-                                        "EEG Signals",
-                                        "BLE",
-                                        "Signal Processing",
-                                        "Signal Filtering",
-                                        "FFT"
+                                        "Neuro PlayGround Lite (ESP32)",
+                                        "EEG",
+                                        "FFT",
+                                        "Arduino",
+                                        "C++",
+                                        "Arduino-IRremote",
+                                        "Embedded Systems",
+                                        "IR Module",
+                                        "Smart Switch"
                               ],
                               "videoUrl": "https://res.cloudinary.com/dfdqptfvs/video/upload/v1772066760/Control_Appliances_using_mind_axjnrn.mp4",
-                              "githubUrl": "",
+                              "githubUrl": "https://github.com/upsidedownlabs/NPG-Lite-Arduino-Firmware/blob/main/BLE-BCI-Server-Toggle/BLE-BCI-Server-Toggle.ino",
                               "demoUrl": ""
                     },
                     {
                               "title": "EMG Gesture Recognition",
-                              "description": "Machine learning pipeline for recognizing hand gestures from EMG signals with 6-channel acquisition.",
-                              "tech": [],
+                              "description": "Real-time 6-channel EMG gesture recognition system interfacing ADS1299 via WebSocket, with custom IIR bandpass/notch filters for signal conditioning, a Random Forest classifier trained on time-domain features, and a PyQtGraph dashboard for live visualization and in-app model training. Mapped predicted gestures to emulated keystrokes for hands-free computer control.",
+                              "tech": [
+                                        "Python",
+                                        "ADS1299",
+                                        "PyQtGraph",
+                                        "NumPy",
+                                        "scikit-learn",
+                                        "WebSocket",
+                                        "LSL",
+                                        "IIR Filters",
+                                        "Random Forest",
+                                        "Real-time DSP"
+                              ],
                               "videoUrl": "https://res.cloudinary.com/dfdqptfvs/video/upload/v1771978155/Video_by_origininterconnect_DSNjrwiEwP4_ctpie3.mp4",
                               "githubUrl": "",
                               "demoUrl": ""
                     },
                     {
-                              "title": "ECG Heart Rate Monitor",
-                              "description": "Precise PQRST detection algorithm for calculating BPM from 3-channel ECG with medical-grade accuracy.",
+                              "title": "RFID Smart Gate System",
+                              "description": "Designed and deployed a battery-efficient RFID-based automatic gate control system using ESP32-C3, eliminating manual remote operation and streamlining office access.\nImplemented deep-sleep optimization and hardware relay integration to achieve over one week of runtime on a 1000 mAh battery.",
                               "tech": [
-                                        "ECG",
-                                        "C/C++",
-                                        "DSP",
-                                        "Real-time Processing",
-                                        "NPG Lite"
+                                        "ESP32-C3",
+                                        "Embedded C/C++",
+                                        "RFID (MFRC522)",
+                                        "SPI",
+                                        "Deep Sleep Mode",
+                                        "Relay Module",
+                                        "Li-ion Battery"
                               ],
                               "videoUrl": "https://res.cloudinary.com/dfdqptfvs/video/upload/v1771978163/Video_by_hoomans_of_upsidedownlabs_DKSY98NTJ_h_gwnrik.mp4",
                               "githubUrl": "",
+                              "demoUrl": ""
+                    },
+                    {
+                              "title": "Live ECG of 60 participants at ISF 2026",
+                              "description": "A system for real-time acquisition of heart-rate data from up to 60 people using 20 NPG Lite devices. Each device connects wirelessly to a single S3-Geek (ESP32-S3) master using the ESP-NOW protocol, with live visualization and processing on a web interface.",
+                              "tech": [
+                                        "NPG Lite",
+                                        "ESP32 S3-Geek",
+                                        "ESP-NOW",
+                                        "Jupyter Notebook (data processing)",
+                                        "Vanilla JS"
+                              ],
+                              "videoUrl": "https://res.cloudinary.com/dfdqptfvs/video/upload/v1772183629/ECG_fhy5cn.mp4",
+                              "githubUrl": "https://github.com/CIumsy/LX-Beats",
                               "demoUrl": ""
                     }
           ]
