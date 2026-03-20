@@ -925,7 +925,6 @@
             <label class="adm-lbl">Email</label><input class="adm-inp" id="contactEmail">
             <label class="adm-lbl">LinkedIn URL</label><input class="adm-inp" id="contactLinkedIn">
             <label class="adm-lbl">GitHub URL</label><input class="adm-inp" id="contactGitHub">
-            <label class="adm-lbl">Portfolio URL</label><input class="adm-inp" id="contactPortfolio">
         </div>
         <div style="margin-top:20px;">
             <button class="adm-btn" onclick="saveContent()">💾 Save</button>
@@ -947,7 +946,7 @@
     <nav>
         <div class="nav-brand" id="navBrand">KS</div>
         <ul class="nav-links">
-            <li><a href="#projects">Projects</a></li>
+            <li><a href="#projects">Project s</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -956,7 +955,6 @@
 
     <header>
         <div class="hero">
-            <div class="hero-label">Portfolio</div>
             <h1 class="hero-name" id="dName">Your Name</h1>
             <p class="hero-tagline" id="dTagline">Neuroscience Engineer · Brain-Computer Interfaces · Embedded Systems
             </p>
@@ -967,17 +965,12 @@
                 <a href="#contact" class="btn btn-ghost" id="dBtn2">Contact Me</a>
             </div>
         </div>
-        <div class="scroll-cue"><span>scroll</span>
-            <div class="scroll-line"></div>
-        </div>
     </header>
 
     <div class="divider"></div>
 
     <div class="section reveal" id="projects">
-        <p class="section-eyebrow">Selected Work</p>
-        <h2 class="section-heading">Featured Projects</h2>
-        <p class="section-sub">Real-time biosignal processing, embedded firmware, and interactive BCI applications</p>
+        <h2 class="section-heading">Projects</h2>
         <div class="projects-grid" id="projectsGrid"></div>
         <div style="text-align:center;margin-top:48px;">
             <button class="btn btn-gold" id="addProjectBtn" onclick="addProject()">+ Add Project</button>
@@ -987,36 +980,72 @@
     <div class="divider"></div>
 
     <div class="section reveal" id="skills">
-        <p class="section-eyebrow">Expertise</p>
         <h2 class="section-heading">Skills & Technologies</h2>
-        <p class="section-sub">A multidisciplinary toolkit spanning neuroscience, hardware, and software</p>
         <div class="skills-row">
             <div class="s-card">
                 <div class="s-icon">🧠</div>
-                <div class="s-name">Biosignal Processing</div>
-                <div class="s-pills"><span class="s-pill">EEG</span><span class="s-pill">EMG</span><span
-                        class="s-pill">ECG</span><span class="s-pill">FFT</span><span
-                        class="s-pill">Filtering</span><span class="s-pill">BCI</span></div>
+                <div class="s-name">HCI / BCI Engineering</div>
+                <div class="s-pills">
+                    <span class="s-pill">EEG Acquisition</span>
+                    <span class="s-pill">EMG Processing</span>
+                    <span class="s-pill">ECG / Heart-Rate</span>
+                    <span class="s-pill">EOG Detection</span>
+                    <span class="s-pill">Brain-Computer Interfaces</span>
+                </div>
             </div>
             <div class="s-card">
                 <div class="s-icon">⚡</div>
-                <div class="s-name">Embedded Systems</div>
-                <div class="s-pills"><span class="s-pill">ESP32</span><span class="s-pill">Arduino</span><span
-                        class="s-pill">STM32</span><span class="s-pill">RTOS</span><span class="s-pill">BLE</span><span
-                        class="s-pill">C/C++</span></div>
+                <div class="s-name">Embedded Systems & Firmware</div>
+                <div class="s-pills">
+                    <span class="s-pill">ESP32</span>
+                    <span class="s-pill">Arduino</span>
+                    <span class="s-pill">STM32</span>
+                    <span class="s-pill">FreeRTOS</span>
+                    <span class="s-pill">SPI / I2C / UART</span>
+                    <span class="s-pill">ADS1299</span>
+                    <span class="s-pill">Prototyping</span>
+                    <span class="s-pill">RFID / NFC Modules</span>
+                    <span class="s-pill">Relay & Power Management</span>
+                    <span class="s-pill">Sensor Integration</span>
+                </div>
             </div>
             <div class="s-card">
-                <div class="s-icon">🤖</div>
-                <div class="s-name">Machine Learning</div>
-                <div class="s-pills"><span class="s-pill">TensorFlow</span><span class="s-pill">CNN-LSTM</span><span
-                        class="s-pill">Python</span><span class="s-pill">Scikit-learn</span></div>
+                <div class="s-icon">📡</div>
+                <div class="s-name">Signal Processing & DSP</div>
+                <div class="s-pills">
+                    <span class="s-pill">FFT / Spectral Analysis</span>
+                    <span class="s-pill">IIR & FIR Filters</span>
+                    <span class="s-pill">Bandpass / Notch Filtering</span>
+                    <span class="s-pill">Envelope Detection</span>
+                    <span class="s-pill">Real-time DSP</span>
+                    <span class="s-pill">Artifact Rejection</span>
+                </div>
+            </div>
+            <div class="s-card">
+                <div class="s-icon">💻</div>
+                <div class="s-name">Software Development</div>
+                <div class="s-pills">
+                    <span class="s-pill">C / C++</span>
+                    <span class="s-pill">Python</span>
+                    <span class="s-pill">JavaScript</span>
+                    <span class="s-pill">WebSocket / REST APIs</span>
+                    <span class="s-pill">PyQt / GUI Development</span>
+                    <span class="s-pill">Git & CI/CD</span>
+                    <span class="s-pill">Linux</span>
+                </div>
             </div>
             <div class="s-card">
                 <div class="s-icon">📊</div>
-                <div class="s-name">Visualization</div>
-                <div class="s-pills"><span class="s-pill">MATLAB</span><span class="s-pill">NumPy</span><span
-                        class="s-pill">Pandas</span><span class="s-pill">Unity</span><span
-                        class="s-pill">Real-time</span></div>
+                <div class="s-name">Data Science & ML</div>
+                <div class="s-pills">
+                    <span class="s-pill">Scikit-learn</span>
+                    <span class="s-pill">TensorFlow</span>
+                    <span class="s-pill">Random Forest / SVM</span>
+                    <span class="s-pill">Feature Extraction</span>
+                    <span class="s-pill">Real-time Classification</span>
+                    <span class="s-pill">Jupyter Notebook</span>
+                    <span class="s-pill">Data Processing & Analysis</span>
+                </div>
             </div>
         </div>
     </div>
@@ -1024,7 +1053,6 @@
     <div class="divider"></div>
 
     <div class="section reveal" id="about">
-        <p class="section-eyebrow">Background</p>
         <h2 class="section-heading">About Me</h2>
         <div class="about-grid">
             <div class="about-photo-wrap">
@@ -1032,25 +1060,12 @@
                 <div class="about-photo" id="aboutImg"><span>Add photo</span></div>
             </div>
             <div class="about-text">
-                <h3 id="dAboutTitle">About Me</h3>
-                <p id="dAboutT1">I'm a neuroscience engineer specializing in brain-computer interfaces and embedded
-                    biosignal systems.</p>
-                <p id="dAboutT2">With experience in EEG/EMG/ECG processing, real-time data visualization, and firmware
+                <p id="dAboutT1">I'm a neuroscience engineer specializing in brain-computer interfaces, human-computer
+                    interaction and embedded
+                    systems.</p>
+                <p id="dAboutT2">With experience in EEG/EMG/EOG/ECG processing, real-time data visualization, and
+                    firmware
                     development, I build systems that bridge neuroscience and technology.</p>
-                <div class="about-stats">
-                    <div>
-                        <div class="a-stat-val">10+</div>
-                        <div class="a-stat-lbl">Projects</div>
-                    </div>
-                    <div>
-                        <div class="a-stat-val">3+</div>
-                        <div class="a-stat-lbl">Years</div>
-                    </div>
-                    <div>
-                        <div class="a-stat-val">5+</div>
-                        <div class="a-stat-lbl">Publications</div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -1059,9 +1074,8 @@
 
     <div class="section reveal" id="contact">
         <div class="contact-wrap">
-            <p class="section-eyebrow">Get in Touch</p>
             <h2 class="section-heading">Let's Connect</h2>
-            <p class="section-sub">Open to freelance projects, collaborations, and consulting opportunities</p>
+            <p class="section-sub">Open to freelance projects, collaborations, and consulting opportunities.</p>
             <div class="contact-cards" id="contactMethods"></div>
         </div>
     </div>
@@ -1296,7 +1310,7 @@
           "hero": {
                     "name": "Krishnanshu Mittal",
                     "tagline": "Neuroscience Engineer | Brain-Computer Interfaces | Embedded Systems",
-                    "description": "Specializing in real-time biosignal processing, EEG/EMG/ECG acquisition, and building interactive BCI applications.",
+                    "description": "Specializing in real-time bio-potential signal processing, EEG/EMG/EOG/ECG acquisition, and building interactive BCI and HCI applications.",
                     "btn1Text": "View Projects",
                     "btn1Link": "#projects",
                     "btn2Text": "Contact Me",
@@ -1311,8 +1325,7 @@
           "contact": {
                     "email": "clumsyy4u@gmail.com",
                     "linkedin": "https://linkedin.com/in/krishnanshu27",
-                    "github": "https://github.com/CIumsy",
-                    "portfolio": "clumsythinks.me"
+                    "github": "https://github.com/CIumsy"
           },
           "projects": [
                     {
@@ -1420,11 +1433,11 @@
         }
 
         function renderAbout() {
-            document.getElementById('dAboutTitle').textContent = D.about.title;
             document.getElementById('dAboutT1').textContent = D.about.text1;
             document.getElementById('dAboutT2').textContent = D.about.text2;
             const box = document.getElementById('aboutImg');
-            box.innerHTML = D.about.image ? `<img src="${D.about.image}" alt="Profile">` : '<span>Add photo</span>';
+            const imgSrc = D.about.image || 'profile.png';
+            box.innerHTML = imgSrc ? `<img src="${imgSrc}" alt="Profile">` : '<span>Add photo</span>';
         }
 
         function renderContact() {
@@ -1433,7 +1446,6 @@
                 { icon: '💼', label: 'LinkedIn', val: 'LinkedIn', link: D.contact.linkedin },
                 { icon: '🐙', label: 'GitHub', val: 'GitHub', link: D.contact.github }
             ];
-            if (D.contact.portfolio) items.push({ icon: '🌐', label: 'Portfolio', val: 'Website', link: D.contact.portfolio });
             document.getElementById('contactMethods').innerHTML = items.filter(i => i.link).map(i => `
         <div class="c-card"><div class="c-icon">${i.icon}</div><span class="c-label">${i.label}</span>
         <a href="${i.link}" class="c-link" target="_blank" rel="noopener">${i.val}</a></div>`).join('');
@@ -1471,7 +1483,7 @@
             document.getElementById('contactEmail').value = D.contact.email;
             document.getElementById('contactLinkedIn').value = D.contact.linkedin;
             document.getElementById('contactGitHub').value = D.contact.github;
-            document.getElementById('contactPortfolio').value = D.contact.portfolio;
+
         }
 
         function saveContent() {
@@ -1487,7 +1499,7 @@
             };
             D.contact = {
                 email: document.getElementById('contactEmail').value, linkedin: document.getElementById('contactLinkedIn').value,
-                github: document.getElementById('contactGitHub').value, portfolio: document.getElementById('contactPortfolio').value
+                github: document.getElementById('contactGitHub').value
             };
             localStorage.setItem('portfolioData', JSON.stringify(D)); renderAll(); alert('✅ Saved!');
         }
