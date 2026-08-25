@@ -11,11 +11,11 @@
 
 ---
 ### 🔧 What I've Built
-- ⚡ **[NPG Lite BLE Firmware](https://github.com/CIumsy/Chords-Arduino-Firmware/tree/main/NPG-LITE-BLE)** — 6 biosignal channels at 500 Hz over custom BLE GATT. DMA ADC with ISR-to-task semaphore signalling, double-buffered payloads, three hardware variants auto-detected at boot, Li-Po lookup table and deep sleep on critical battery.
-- 🧠 **[NeuroGaze](https://github.com/CIumsy/AQNL-BCI-SSVEP)** — SSVEP brain-computer interface running entirely on an Arduino UNO Q, no host PC and no cloud in the loop. Four targets flickering at 7/13/15/17 Hz, decoded with FBCCA from a 3-contact occipital montage streamed over Wi-Fi. A confidence gate takes accuracy from 76% to 98.6% by staying silent when unsure. Built for the Arduino Physical AI Challenge India 2026.
-- 💓 **[LX-Beats](https://github.com/CIumsy/LX-Beats)** — 20-node wearable ECG network, 60 live heart-rate feeds into one gateway, Pan-Tompkins R-peak detection running on each node. Deployed at India Science Festival, IISER Pune.
-- 🖱️ **[BCI Inertial Mouse](https://github.com/CIumsy/npg-lite-firmware/tree/main/NPG-Mouse-MPU6050)** — head-worn mouse, IMU tilt to BLE HID cursor, EOG blink detection for clicks.
-- 🎮 **[BCI BLE Gamepad](https://github.com/CIumsy/npg-lite-firmware/tree/main/BCI-BLE-Gamepad)** — BLE HID gamepad recognised natively by Windows, Linux and Android. 256-point FFT focus detection and EMG steering.
+- ⚡ **[NPG Lite BLE Firmware](https://github.com/CIumsy/Chords-Arduino-Firmware/tree/main/NPG-LITE-BLE)** - 6 biosignal channels at 500 Hz over custom BLE GATT. DMA ADC with ISR-to-task semaphore signalling, double-buffered payloads, three hardware variants auto-detected at boot, Li-Po lookup table and deep sleep on critical battery.
+- 🧠 **[NeuroGaze](https://github.com/CIumsy/AQNL-BCI-SSVEP)** - SSVEP brain-computer interface running entirely on an Arduino UNO Q, no host PC and no cloud in the loop. Four targets flickering at 7/13/15/17 Hz, decoded with FBCCA from a 3-contact occipital montage streamed over Wi-Fi. A confidence gate takes accuracy from 76% to 98.6% by staying silent when unsure. Built for the Arduino Physical AI Challenge India 2026.
+- 💓 **[LX-Beats](https://github.com/CIumsy/LX-Beats)** - 20-node wearable ECG network, 60 live heart-rate feeds into one gateway, Pan-Tompkins R-peak detection running on each node. Deployed at India Science Festival, IISER Pune.
+- 🖱️ **[BCI Inertial Mouse](https://github.com/CIumsy/npg-lite-firmware/tree/main/NPG-Mouse-MPU6050)** - head-worn mouse, IMU tilt to BLE HID cursor, EOG blink detection for clicks.
+- 🎮 **[BCI BLE Gamepad](https://github.com/CIumsy/npg-lite-firmware/tree/main/BCI-BLE-Gamepad)** - BLE HID gamepad recognised natively by Windows, Linux and Android. 256-point FFT focus detection and EMG steering.
 
 ---
 ### 🌐 Connect with Me:
