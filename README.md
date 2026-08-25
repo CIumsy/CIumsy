@@ -48,6 +48,8 @@
 - **Protocols:** BLE (GAP, GATT, HID, custom profiles, MTU and TX-power tuning), ESP-NOW, SPI, I2C, UART, USB CDC, GPIO, PWM, ADC with DMA, WebSocket, LSL
 - **Debug & Production:** JTAG/SWD, GDB + OpenOCD, logic analyzer, oscilloscope, UART hardware-in-loop harnesses, factory test firmware
 - **Signal Processing & ML:** FFT, IIR/FIR filtering, envelope detection, Pan-Tompkins R-peak extraction, SSVEP with CCA/FBCCA, MNE-Python, scikit-learn, Pandas, NumPy
-
+---
+### 📊 GitHub Metrics:
+<p align="center"><img src="./metrics.svg" alt="Metrics" /></p>
 ---
 💡 *Keep coding, keep jamming, and remember: every bug is just a new feature in disguise!* 🚀
